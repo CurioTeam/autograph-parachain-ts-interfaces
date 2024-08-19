@@ -1,0 +1,29 @@
+{
+  "name": "autograph-parachain-ts-interfaces",
+  "version": "1.0.0",
+  "description": "Typescript interfaces for autograph node API",
+  "homepage": "https://github.com/CurioTeam/autograph-parachain-ts-interfaces",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CurioTeam/autograph-parachain-ts-interfaces.git"
+  },
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "build": "yarn generate:defs && yarn generate:meta",
+    "generate:defs": "tsx node_modules/.bin/polkadot-types-from-defs --package . --input ./src/interfaces --endpoint ./metadata.json",
+    "generate:meta": "tsx node_modules/.bin/polkadot-types-from-chain --package . --endpoint ./metadata.json --output ./src/interfaces",
+    "lint": "tsc --noEmit --pretty"
+  },
+  "author": "CurioTeam",
+  "license": "GPL-3.0-only",
+  "dependencies": {
+    "@polkadot/api": "^12.3.1"
+  },
+  "devDependencies": {
+    "@polkadot/typegen": "^12.3.1",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.17.0",
+    "typescript": "^5.5.4"
+  }
+}
